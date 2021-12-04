@@ -38,6 +38,9 @@ namespace Persistence
             modelBuilder.ApplyConfiguration(new UserTokenConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
             modelBuilder.ApplyConfiguration(new RoleClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new RefreshTokenConfiguration());
         }
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

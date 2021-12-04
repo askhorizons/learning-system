@@ -16,12 +16,14 @@ namespace Entities
         public virtual ICollection<UserClaim> UserClaims { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<UserToken> UserTokens { get; set; }
+        public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
         public AppUser()
         {
             UserLogins = new HashSet<UserLogin>();
             UserClaims = new HashSet<UserClaim>();
             UserRoles = new HashSet<UserRole>();
             UserTokens = new HashSet<UserToken>();
+            RefreshTokens = new HashSet<RefreshToken>();
         }
     }
 }
