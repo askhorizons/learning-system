@@ -74,7 +74,8 @@ namespace API.Controllers
             {
                 DisplayName = $"{user.FirstName} {user.LastName}",
                 Token = _tokenService.CreateToken(user),
-                Username = user.UserName
+                Username = user.UserName,
+                Image = string.Empty
             };
         }
         #endregion

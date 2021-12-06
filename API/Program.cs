@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +27,9 @@ namespace API
                 {
                     var context = services.GetRequiredService<DataContext>();
                     await context.Database.EnsureCreatedAsync();
+
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    await DataSeeder.SeedData(context, userManager);
                 }
                 catch (Exception ex)
                 {

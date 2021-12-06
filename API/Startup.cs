@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using API.Extensions;
+using API.Services;
 using Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -56,9 +58,9 @@ namespace API
                     });
             });
             services.AddDbContext<DataContext>();
+            services.AddTransient<TokenService>();
 
-            services.AddIdentity<AppUser, AppRole>()
-                .AddEntityFrameworkStores<DataContext>();
+            services.AddIdentityServices(Configuration);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
